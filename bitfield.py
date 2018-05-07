@@ -23,6 +23,7 @@ log.setLevel(logging.INFO)
 
 WORD_SIZE = 32 
 
+
 class BitField(object):
     """A BitField object handles insertion and 
     extraction of one field within an integer.
@@ -105,13 +106,3 @@ def sign_extend(field: int, width: int) -> int:
     else:
         return field
 
-
-
-        
-    
-
-    
-
-
-    
-        
