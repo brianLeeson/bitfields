@@ -5,6 +5,8 @@ Very simple tests of the instruction format, encoding and decoding.
 import unittest
 import instr_format
 from instr_format import OpCode, CondFlag
+
+
 class test_instruction(unittest.TestCase):
     """Simple shakedown of instruction format"""
 
@@ -32,11 +34,11 @@ class test_instruction(unittest.TestCase):
         self.assertEqual(instr.offset, -12)
 
     def test_encode_decode(self):
-        """Binary encoding and decoding of an insruction"""
+        """Binary encoding and decoding of an instruction"""
         instr = instr_format.instruction_from_string("  ADD ALWAYS pc r3 r5 -12")
         as_word = instr.encode()
         as_instr = instr_format.decode(as_word)
-        self.assertEqual(instr,as_instr)
+        self.assertEqual(instr, as_instr)
 
 
 if __name__ == "__main__":

@@ -19,6 +19,7 @@ from instr_format import OpCode, CondFlag
     DIV = 7     # Integer division (like // in Python)
 """
 
+
 class TestALU(unittest.TestCase):
     """Simple shakedown tests for alu.py"""
 
@@ -56,7 +57,6 @@ class TestALU(unittest.TestCase):
         self.assertEqual(self.alu.exec(OpCode.DIV, -4, 2), (-2, CondFlag.M))
         self.assertEqual(self.alu.exec(OpCode.DIV, 0, 4), (0, CondFlag.Z))
         self.assertEqual(self.alu.exec(OpCode.DIV, 4, 0), (0, CondFlag.V))
-
 
 
 if __name__ == "__main__":
