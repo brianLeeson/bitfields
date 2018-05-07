@@ -3,10 +3,11 @@ Tests for bitfield.py
 """
 
 import unittest
+import bitfield
 from bitfield import BitField
 
 
-class TestExpr(unittest.TestCase):
+class TestBitFields(unittest.TestCase):
 
     def test_low_order(self):
         low_4 = BitField(0,3)
@@ -49,6 +50,49 @@ class TestExpr(unittest.TestCase):
             self.assertEqual(midpart.extract(packed), v)
             self.assertEqual(highpart.extract(packed), v)
 
+    def test_replace(self):
+        """Test replacing an existing field of bits."""
+        packed = 0x0f0        # 11110000  --- we want to clobber those ones
+        newval = 0x005        # 00000101  --- and replaced them with 0101
+        field = BitField(4,7) # ____xxxx  --- in positions 4..7
+        packed = field.insert(newval,packed)
+        self.assertEqual(packed, 0x50)  # 01010000 --- some zeros replaced 1s
+        # Note 0x50 == 0b01010000 == 80
+        
+    def test_width(self):
+        """Make sure we are masking out any bits that don't fit in 
+        the field. 
+        """
+        second_nibble = BitField(4,7)
+        value = 0xff  ## A full byte; two nibbles
+        packed = second_nibble.insert(value,0)
+        self.assertEqual(packed,0xf0)
+        # Note 0xf0 == 240
+
+class TestSignExtension(unittest.TestCase):
+    """Testing the sign extension function.  If you move sign extension into
+    the BitFields class, you mway want to remove this test class.
+    """
+
+    def test_extend_neg(self):
+        """0b111 in a 3-bit field is negative 1"""
+        self.assertEqual(bitfield.sign_extend(7,3), -1)
+
+    def test_extend_neg(self):
+        """0b0111 in a 4-bit field is positive 7"""
+        self.assertEqual(bitfield.sign_extend(7,4), 7)
+
+    def test_not_all_neg(self):
+        """For good measure, make sure it works for an integer that
+        is not all 1s.
+        """
+        self.assertEqual(bitfield.sign_extend(11, 4), -5)
+        self.assertEqual(bitfield.sign_extend(11, 5), 11)
+        self.assertEqual(bitfield.sign_extend(13,4), -3)
+        self.assertEqual(bitfield.sign_extend(13,5), 13)
+
+
+        
 if __name__ == '__main__':
     unittest.main()
 
