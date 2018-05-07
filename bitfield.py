@@ -1,7 +1,7 @@
 """
 A bit field is a range of binary digits within an
-unsigned integer.   Bit 0 is the low-order bit,
-with value 1 = 2^0.  Bit 31 is the high-order bit, 
+unsigned integer. Bit 0 is the low-order bit,
+with value 1 = 2^0. Bit 31 is the high-order bit,
 with value 2^31. 
 
 A bitfield object is an aid to encoding and decoding 

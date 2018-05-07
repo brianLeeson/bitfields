@@ -13,11 +13,11 @@ class ALU(object):
     """The arithmetic logic unit (also called a "functional unit"
     in a modern CPU) executes a selected function but does not
     otherwise manage CPU state. A modern CPU core may have several
-    ALUs to boost performance by performing multiple operatons
+    ALUs to boost performance by performing multiple operations
     in parallel, but the Duck Machine has just one ALU in one core.
     """
     # The ALU chooses one operation to apply based on a provided
-    # operation code.  These are just simple functions of two arguments;
+    # operation code. These are just simple functions of two arguments;
     # in hardware we would use a multiplexer circuit to connect the
     # inputs and output to the selected circuitry for each operation.
     ALU_OPS = {
