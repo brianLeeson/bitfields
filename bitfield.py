@@ -1,7 +1,7 @@
 """
 A bit field is a range of binary digits within an
-unsigned integer.   Bit 0 is the low-order bit,
-with value 1 = 2^0.  Bit 31 is the high-order bit, 
+unsigned integer. Bit 0 is the low-order bit,
+with value 1 = 2^0. Bit 31 is the high-order bit,
 with value 2^31. 
 
 A bitfield object is an aid to encoding and decoding 
@@ -23,6 +23,7 @@ log.setLevel(logging.INFO)
 
 WORD_SIZE = 32 
 
+
 class BitField(object):
     """A BitField object handles insertion and 
     extraction of one field within an integer.
@@ -34,12 +35,13 @@ class BitField(object):
     #    are inclusive, e.g., if from_bit=0 and to_bit = 4, then it is a
     #    5 bit field with bits numbered 0, 1, 2, 3, 4.
     #
-    #    You might want to compute some additional values in the constructor
+    #    You might want to precompute some additional values in the constructor
     #    rather than recomputing them each time you insert or extract a value.
-    #    I precomputed a mask (for extracting the bits of interest), the inverse
-    #    of the mask (for clearing a field before I insert a new value into it),
-    #    the field width (used in several places), and a couple of values used in
-    #    sign extension (see the sign_extend function below).
+    #    I precomputed the field width (used in several places), a mask (for
+    #    extracting the bits of interest), the inverse of the mask (for clearing
+    #    a field before I insert a new value into it), and a couple of other values
+    #    that could be useful to have in sign extension (see the sign_extend
+    #    function below).
     #
     #    method insert takes a field value (an int) and a word (an int)
     #    and returns the word with the field value replacing the old contents
@@ -105,13 +107,3 @@ def sign_extend(field: int, width: int) -> int:
     else:
         return field
 
-
-
-        
-    
-
-    
-
-
-    
-        
