@@ -20,7 +20,6 @@ class test_instruction(unittest.TestCase):
         self.assertEqual(instr.reg_src2, 5)
         self.assertEqual(instr.offset, -12)
 
-
     def test_instruction_from_dict(self):
         """Simple smoke test: Can I make an instruction from a dict?"""
         d = { "opcode": "MUL", "predicate": "ALWAYS", "target": "r1",
