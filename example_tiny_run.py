@@ -31,7 +31,7 @@ def execute(words: List[int]):
     """
     # We don't have the Register objects yet, so ...
     regs = [0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0 ]
+            0, 0, 0, 0, 0, 0, 0, 0]
     alu = ALU()
     for word in words:
         log.debug("Decoding instruction word {}".format(word))
@@ -50,15 +50,14 @@ def execute(words: List[int]):
 
 def main():
     """Execute the tiny program created by
-    exmple_tiny_create.py.
+    example_tiny_create.py.
     """
     code = open("tiny.txt")
-    words = [ ]
+    words = []
     for line in code:
         words.append(int(line))
     execute(words)
 
+
 if __name__ == "__main__":
     main()
-
-
