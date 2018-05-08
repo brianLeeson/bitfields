@@ -21,11 +21,11 @@ logging.basicConfig()
 log = logging.getLogger(__name__)
 log.setLevel(logging.INFO)
 
-WORD_SIZE = 32 
+WORD_SIZE = 32
 
 
 class BitField(object):
-    """A BitField object handles insertion and 
+    """A BitField object handles insertion and
     extraction of one field within an integer.
     """
     pass
@@ -57,9 +57,7 @@ class BitField(object):
     #
     #   method extract_signed does the same as extract, but then if the
     #   sign bit of the field is 1, it sign-extends the value to form the
-    #   appropriate negative integer.  extract_signed could call the function
-    #   extract_signed below, but you may prefer to incorporate that logic into
-    #   the extract_signed method.
+    #   appropriate negative integer.
 
 
 # Sign extension is a little bit wacky in Python, because Python
@@ -106,4 +104,3 @@ def sign_extend(field: int, width: int) -> int:
         return extended
     else:
         return field
-
