@@ -27,10 +27,10 @@ class TestALU(unittest.TestCase):
         self.alu = alu.ALU()
 
     def test_halt(self):
-        self.assertEqual(self.alu.exec(OpCode.HALT,42,64), (0,CondFlag.Z))
+        self.assertEqual(self.alu.exec(OpCode.HALT, 42, 64), (0, CondFlag.Z))
 
     def test_load(self):
-        self.assertEqual(self.alu.exec(OpCode.LOAD,16,32), (48,CondFlag.P))
+        self.assertEqual(self.alu.exec(OpCode.LOAD, 16, 32), (48, CondFlag.P))
 
     def test_store(self):
         self.assertEqual(self.alu.exec(OpCode.STORE, 12, 18), (30, CondFlag.P))

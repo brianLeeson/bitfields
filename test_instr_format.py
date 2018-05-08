@@ -22,8 +22,8 @@ class test_instruction(unittest.TestCase):
 
     def test_instruction_from_dict(self):
         """Simple smoke test: Can I make an instruction from a dict?"""
-        d = { "opcode": "MUL", "predicate": "ALWAYS", "target": "r1",
-           "src1": "r2", "src2": "r3", "offset": "-12" }
+        d = {"opcode": "MUL", "predicate": "ALWAYS", "target": "r1",
+             "src1": "r2", "src2": "r3", "offset": "-12"}
         instr = instr_format.instruction_from_dict(d)
         self.assertEqual(instr.op, OpCode.MUL)
         self.assertEqual(instr.cond, CondFlag.ALWAYS)
@@ -42,4 +42,3 @@ class test_instruction(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-
