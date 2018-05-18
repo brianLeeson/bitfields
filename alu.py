@@ -21,9 +21,13 @@ class ALU(object):
     # in hardware we would use a multiplexer circuit to connect the
     # inputs and output to the selected circuitry for each operation.
     ALU_OPS = {
-        # FIXME:  You need functions for ADD, SUB, MUL, DIV
+        # You need functions for ADD, SUB, MUL, DIV
         # Note that DIV is integer division, like // and not like /
-        #
+        OpCode.ADD: lambda x, y: x + y,
+        OpCode.MUL: lambda x, y: x * y,
+        OpCode.SUB: lambda x, y: x - y,
+        OpCode.DIV: lambda x, y: x // y,
+
         # For memory access operations load, store, the ALU
         # performs the address calculation
         OpCode.LOAD: lambda x, y: x + y,
